@@ -6,6 +6,7 @@ export default function TextArea(props) {
     const upperCaseFunc=()=>{
         let newText=enterText.toUpperCase();
         setText(newText);
+        props.triggerAlert("UpperCASING is done","success")
     };
 
     const handleOnchange=(event)=>{
