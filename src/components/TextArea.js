@@ -9,6 +9,12 @@ export default function TextArea(props) {
         props.triggerAlert("UpperCASING is done","success")
     };
 
+    const lowercaseFunc=()=>{
+        let newText=enterText.toLowerCase();
+        setText(newText);
+        props.triggerAlert("lowercasing is done","success");
+    }
+
     const handleOnchange=(event)=>{
         console.log('On change is triggered')
         setText(event.target.value);
@@ -20,7 +26,8 @@ export default function TextArea(props) {
             <div className="mb-3">
                 <textarea onChange={handleOnchange} value={enterText} className="form-control" id="exampleFormControlTextarea1" rows="6" style={{backgroundColor:props.mode==="dark"?"#050b30":"white" ,color:props.mode==="dark"?"white":"black"}}></textarea>
             </div>
-            <button disabled={enterText.length===0} className="btn btn-success" onClick={upperCaseFunc}>Change to Uppercase</button>
+            <button disabled={enterText.length===0} className="btn btn-success m-2" onClick={upperCaseFunc}>Change to Uppercase</button>
+            <button disabled={enterText.length===0} className="btn btn-success m-2" onClick={lowercaseFunc}>Change to lowercase</button>
         </div>
         <div className={`container my-4 text-${props.mode==="dark"?"light":"dark"}`}>
 
