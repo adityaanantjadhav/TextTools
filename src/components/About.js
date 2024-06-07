@@ -1,29 +1,34 @@
 import React, { useState } from "react";
 
-export default function About() {
-  const [customStyle,setStyle]=useState({
-    backgroundColor:'white',
-    color:'black'
-  })
+export default function About(props) {
+  // const [customStyle,setStyle]=useState({
+  //   backgroundColor:'white',
+  //   color:'black'
+  // })
   
   const [buttonText,setButton]=useState('Turn on Dark Mode')
 
-  const toggleStyle=()=>{
-        if(customStyle.backgroundColor==='white'){
-            setStyle({
-                backgroundColor:'black',
-                color:'white'
-            })
-            setButton('Turn off dark mode');
-        }
-        else{
-            setStyle({
-                backgroundColor:'white',
-                color:'black'
-            })
-            setButton('Turn on Dark mode')
-        }
+  let customStyle={
+      backgroundColor:props.mode==='light'?'white':'darkblue',
+      color:props.mode==='light'?'black':'white'
   }
+
+  // const toggleStyle=()=>{
+  //       if(customStyle.backgroundColor==='white'){
+  //           setStyle({
+  //               backgroundColor:'black',
+  //               color:'white'
+  //           })
+  //           setButton('Turn off dark mode');
+  //       }
+  //       else{
+  //           setStyle({
+  //               backgroundColor:'white',
+  //               color:'black'
+  //           })
+  //           setButton('Turn on Dark mode')
+  //       }
+  // }
 
   return (
     <div className="container p-4" style={customStyle}>
@@ -122,9 +127,6 @@ export default function About() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="container my-4">
-        <button onClick={toggleStyle} className="btn btn-success">{buttonText}</button>
       </div>
     </div>
   );

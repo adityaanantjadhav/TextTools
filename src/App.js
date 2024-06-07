@@ -6,6 +6,13 @@ import Navbar from "./components/Navbar";
 import TextArea from "./components/TextArea";
 import Alert from "./components/Alert";
 
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link
+} from "react-router-dom";
+
 function App() {
 
   const [mode,setMode]=useState('light');       //for darkmode
@@ -36,6 +43,8 @@ function App() {
   }
   return (
     <>
+    <Router>
+
       <Navbar title='TextTooL' mode={mode} toggleMode={toggleMode} />
       {/* <Navbar title={4} />              Gets error in console due to propTypes not match */}
       {/* <Navbar/>                   Gets Default prop */}
@@ -43,11 +52,12 @@ function App() {
       <Alert alert={alertText} />
 
 
-      <TextArea name="Enter Text Here" mode={mode} triggerAlert={triggerAlert}/>
+      <Routes>
+          <Route exact path="/about" element={<About mode={mode} />}/>
+          <Route path="/" element={<TextArea name="Enter Text Here" mode={mode} triggerAlert={triggerAlert}/>} />
+      </Routes>
 
-
-
-      {/* <About/> */}
+    </Router>
     </>
   );
 }

@@ -20,12 +20,12 @@ export default function TextArea(props) {
             <div className="mb-3">
                 <textarea onChange={handleOnchange} value={enterText} className="form-control" id="exampleFormControlTextarea1" rows="6" style={{backgroundColor:props.mode==="dark"?"#050b30":"white" ,color:props.mode==="dark"?"white":"black"}}></textarea>
             </div>
-            <button className="btn btn-success" onClick={upperCaseFunc}>Change to Uppercase</button>
+            <button disabled={enterText.length===0} className="btn btn-success" onClick={upperCaseFunc}>Change to Uppercase</button>
         </div>
         <div className={`container my-4 text-${props.mode==="dark"?"light":"dark"}`}>
 
             <h2>Your Text Summary</h2>
-            <p>There are {enterText.split(" ").length} words and {enterText.length} characters in Text </p>
+            <p>There are {enterText.split(" ").filter((element)=>{return element.length!==0;}).length} words and {enterText.length} characters in Text </p>
         </div>
     </>
   );
